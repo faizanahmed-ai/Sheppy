@@ -1029,20 +1029,26 @@ window.addEventListener('load',()=>{
   document.querySelectorAll('.ni').forEach((n,i)=>{n.style.animation=`ledger-entry .32s ease ${(i*0.07+0.05).toFixed(2)}s both`;});
 });
 const VT={scan:'page_dashboard',health:'page_health',records:'page_records',market:'page_market',price:'page_price'};
+
 function sv(v,el){
   document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
-  document.querySelectorAll('.ni,.bni').forEach(x=>x.classList.remove('active'));
-  $('view-'+v).classList.add('active');
-  if(el)el.classList.add('active');
-  // sync bottom nav
+  document.querySelectorAll('.ni').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.bni').forEach(x=>x.classList.remove('active'));
+  const view=$('view-'+v);
+  if(view)view.classList.add('active');
+  document.querySelectorAll('.ni').forEach(n=>{
+    const oc=n.getAttribute('onclick')||'';
+    if(oc.includes("'"+v+"'"))n.classList.add('active');
+  });
   const bn=document.querySelector('.bni[data-bv="'+v+'"]');
   if(bn)bn.classList.add('active');
-  $('page-title').textContent=T(VT[v]);
+  $('page-title').textContent=T(VT[v]||'page_dashboard');
   const rs=$('rsidebar');
   if(rs)rs.style.display=(v==='scan'&&window.innerWidth>768)?'flex':'none';
   if(v==='market')loadMarket();
-  if(v==='price'){clrPR();}
+  if(v==='price')clrPR();
 }
+
 function setLang(el,lang){
   document.querySelectorAll('.lo').forEach(l=>l.classList.remove('active'));
   el.classList.add('active');CL=lang;applyLang();
