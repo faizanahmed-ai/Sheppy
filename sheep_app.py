@@ -610,7 +610,7 @@ def _validate_diagnosis(r, selected):
     return r
 
 # ── Frontend HTML (unchanged) ─────────────────────────────────────
-_HTML_PATH = __import__("pathlib").Path(__file__).parent / "frontend.html"
+_HTML_PATH = __import__("pathlib").Path(__file__).parent / "index.html"
 FRONTEND_HTML = _HTML_PATH.read_text(encoding="utf-8")
 
 # ── FastAPI app ───────────────────────────────────────────────────
