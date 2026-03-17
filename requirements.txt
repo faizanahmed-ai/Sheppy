@@ -1,23 +1,5 @@
-# Web Server & API
-fastapi
-uvicorn[standard]
-python-multipart
-
-# Core Logic & Image Processing
-numpy
-Pillow
-opencv-python-headless
-albumentations
-
-# AI Models (Full Versions)
-ultralytics
-transformers
-onnxruntime
-torch
-torchvision
-# Note: CLIP must be installed from the GitHub source
-git+https://github.com/openai/CLIP.git
-
-# Monitoring & Tracking
-prometheus_client
-mlflow
+fastapi==0.111.0
+uvicorn==0.29.0
+python-multipart==0.0.9
+pillow==10.3.0
+numpy==1.26.4
